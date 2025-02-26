@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Temperature Graph</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="graph-container"></canvas>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="data.js"></script>
+   
+    <div id="latest-temperature"></div>
+
+    <script>
+      function updateLatestTemperature() {
+        $.ajax({
+          url: 'latest_data.php',
+          success: function(json_lastdata) {
+            let lastData = JSON.parse(json_lastdata);
+            let temperature = lastData[1];
+            document.getElementById('latest-temperature').innerHTML = temperature + '&deg;C';
+          }
+        });
+      }
+
+      updateLatestTemperature();
+      setInterval(updateLatestTemperature, 5000);
+    </script>
+
+    <footer>Copyright 2023</footer>
+  </body>
+</html>
+

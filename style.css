@@ -1,0 +1,14 @@
+body {
+  background-color: #202124;
+}
+
+#graph-container {
+  width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+#latest-temperature {
+  font-size: 64px;
+  color: whitesmoke;
+}
